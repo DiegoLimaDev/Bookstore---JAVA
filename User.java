@@ -3,9 +3,14 @@ import java.time.Period;
 import java.util.ArrayList;
 
 public class User {
-    public String name;
-    public LocalDate birthday;
-    public ArrayList<Book> books = new ArrayList<Book>();
+    private String name;
+    private LocalDate birthday;
+    private ArrayList<Book> books = new ArrayList<Book>();
+
+    User(String name, String birthday) {
+        this.name = name;
+        this.birthday = LocalDate.parse(birthday);
+    }
 
     public int getAge() {
         Period age = Period.between(this.birthday, LocalDate.now());
@@ -15,6 +20,18 @@ public class User {
 
     public void borrowBook(Book book) {
         this.books.add(book);
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getBirthday() {
+        return this.birthday.toString();
+    }
+
+    public ArrayList<Book> getBorrowedBooks() {
+        return this.books;
     }
 
 }

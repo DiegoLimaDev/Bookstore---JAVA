@@ -1,24 +1,18 @@
-import java.time.LocalDate;
-
 class Main {
     public static void main(String[] args) {
-        User user1 = new User();
-        user1.name = "Davi";
-        user1.birthday = LocalDate.parse("2001-10-01");
+        User user1 = new User("Davi", "2001-10-01");
 
-        Book book1 = new Book();
-        book1.title = "Lord of the rings: Complete Volume";
-        book1.author = "J.R.R. Tolkien";
+        Book book1 = new Book("Lord of the rings: Complete Volume", "J.R.R. Tolkien", 724);
 
         user1.borrowBook(book1);
 
-        System.out.printf("%s was born back in %s and now he is %d years old.\n", user1.name,
-                user1.birthday.toString(), user1.getAge());
+        System.out.printf("%s was born back in %s and now he is %d years old.\n", user1.getName(),
+                user1.getBirthday(), user1.getAge());
 
-        if (user1.books.size() == 1) {
-            System.out.printf("%s has borrowed this book: %s", user1.name, user1.books.toString());
+        if (user1.getBorrowedBooks().size() == 1) {
+            System.out.printf("%s has borrowed this book: %s\n", user1.getName(), user1.getBorrowedBooks());
         } else {
-            System.out.printf("%s has borrowed these books: %s", user1.name, user1.books.toString());
+            System.out.printf("%s has borrowed these books: %s\n", user1.getName(), user1.getBorrowedBooks());
         }
     }
 }
